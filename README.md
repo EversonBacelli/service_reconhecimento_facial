@@ -126,6 +126,6 @@ Este projeto está sob a licença **MIT** — veja o arquivo de licença para ma
 
 ---
 
-## 👤 Autor
-**Everson Bacelli** - 📧 **Contato:** everson.wilian29@gmail.com  
+## 👤 Autor **Everson Bacelli** 
+📧 **Contato:** everson.wilian29@gmail.com  
 - 🐙 **GitHub:** [@EversonBacelli](https://github.com/EversonBacelli)
