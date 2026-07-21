@@ -1,4 +1,4 @@
-# 🤖 Backend de Processamento e Reconhecimento Facial
+# 🤖 Backend de Processamento de Imagem e Reconhecimento Facial
 
 📌 **Visão Geral**
 
