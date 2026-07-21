@@ -2,7 +2,7 @@
 
 📌 **Visão Geral**
 
-API REST desenvolvida em Python com **Flask** voltada para o **Processamento e Reconhecimento Facial**. O sistema utiliza técnicas avançadas de Visão Computacional e Aprendizado de Máquina (baseado em **InsightFace**, **OpenCV** e **NumPy**) para autenticação biométrica, análise de qualidade de imagem, correção de iluminação, alinhamento facial e busca por similaridade.
+API REST desenvolvida em Python com **Flask** voltada para o **Processamento e Reconhecimento Facial**. O sistema utiliza técnicas avançadas de Visão Computacional e Aprendizado de Máquina (baseado em **InsightFace**, **OpenCV** e **NumPy**) para autenticação biométrica, análise de qualidade de imagem, correção de iluminação, alinhamento facial e busca por similaridade. Este trabalho foi realizado no contexto na disciplina de Processamento de Imagem e Visão Computacional no Curso de Mestrado na UFABC conduzido pelo professor Francisco de Assis Zampirolli.
 
 ---
 
