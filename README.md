@@ -10,8 +10,8 @@ API REST desenvolvida em Python com **Flask** voltada para o **Processamento e R
 
 O arquivo `main.py` atua como o *Controller* da aplicação, possuindo as seguintes responsabilidades:
 
-1. **Inicialização e Configuração do Servidor**: Instancia a aplicação Flask e configura metadados (OpenAPI/Swagger).
-2. **Carregamento dos Modelos de Reconhecimento**: Executa a carga inicial das redes neurais e algoritmos de extração facial na memória durante o startup do servidor, garantindo respostas de baixa latência nas requisições.
+1. **Inicialização e Configuração do Servidor**: Instancia a aplicação Flask;
+2. **Carregamento dos Modelos de Reconhecimento**: Executa a carga inicial das redes neurais e algoritmos de extração facial na memória durante o startup do servidor, garantindo respostas de baixa latência nas requisições;
 3. **Gerenciamento de Middlewares**: Habilita o CORS (*Cross-Origin Resource Sharing*) para integração com frontends web/mobile e gerencia exceções não capturadas globalmente com retornos padronizados em JSON.
 4. **Registro de Rotas da API**:
 
