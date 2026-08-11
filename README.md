@@ -16,6 +16,7 @@ Esses modelos não procuram simplesmente por padrões fixos de pixels. Eles fora
 - ponta do nariz;
 - canto esquerdo da boca;
 - canto direito da boca.
+
 Esses pontos funcionam como referências para determinar a posição e a orientação do rosto. Por exemplo, se uma pessoa estiver com a cabeça inclinada, os olhos e a boca estarão inclinados na imagem original. Utilizando os landmarks, o sistema consegue realizar uma transformação geométrica para alinhar o rosto.
 O objetivo é fazer com que rostos encontrados em imagens diferentes sejam colocados em uma posição semelhante antes de serem enviados para a rede neural. Normalmente, o rosto alinhado é convertido para um tamanho padronizado, como 112 × 112 pixels, dependendo do modelo utilizado.
 <div align="center">
