@@ -4,9 +4,35 @@
 
 API REST desenvolvida em Python com **Flask** voltada para o **Processamento e Reconhecimento Facial**. O sistema utiliza técnicas avançadas de Visão Computacional e Aprendizado de Máquina (baseado em **InsightFace**, **OpenCV** e **NumPy**) para autenticação biométrica, análise de qualidade de imagem, correção de iluminação, alinhamento facial e busca por similaridade. Este trabalho foi realizado no contexto na disciplina de Processamento de Imagem e Visão Computacional no Curso de Mestrado na UFABC conduzido pelo professor Francisco de Assis Zampirolli.
 
+📦 (Biblioteca de Reconhecimento Facial)
+O InsightFace realiza o reconhecimento facial utilizando técnicas de Inteligência Artificial e Deep Learning. O processo pode ser dividido em três etapas principais: detecção e alinhamento do rosto, geração do embedding facial e comparação dos embeddings.
 
+1. Encontra e alinha os rostos
+O primeiro passo é localizar o rosto dentro da imagem. Para isso, o InsightFace utiliza modelos de detecção facial baseados em Deep Learning, como o RetinaFace ou o SCRFD, dependendo do modelo e da configuração utilizada.
+Esses modelos não procuram simplesmente por padrões fixos de pixels. Eles foram treinados com grandes quantidades de imagens para aprender quais características visuais indicam a presença de um rosto. Ao encontrar uma face, o detector também pode identificar pontos de referência faciais (landmarks). Um conjunto comum utiliza cinco pontos:
+- olho esquerdo;
+- olho direito;
+- ponta do nariz;
+- canto esquerdo da boca;
+- canto direito da boca.
+Esses pontos funcionam como referências para determinar a posição e a orientação do rosto. Por exemplo, se uma pessoa estiver com a cabeça inclinada, os olhos e a boca estarão inclinados na imagem original. Utilizando os landmarks, o sistema consegue realizar uma transformação geométrica para alinhar o rosto.
+O objetivo é fazer com que rostos encontrados em imagens diferentes sejam colocados em uma posição semelhante antes de serem enviados para a rede neural. Normalmente, o rosto alinhado é convertido para um tamanho padronizado, como 112 × 112 pixels, dependendo do modelo utilizado.
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/03c093fb-7d8e-4f94-afde-1831a34fffd3" />
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d1297c9a-0c98-46c8-a50e-f933ed99c570" />
+Essa etapa é importante porque reduz as diferenças causadas pela posição, inclinação e escala do rosto. Assim, duas fotografias da mesma pessoa podem apresentar condições diferentes — por exemplo, uma fotografia com o rosto ligeiramente inclinado e outra com o rosto reto — mas o sistema tenta entregar para a próxima etapa uma representação geometricamente mais consistente.
+
+2. Depois que o rosto foi detectado e alinhado, começa uma das etapas mais importantes do reconhecimento facial: a extração do embedding. O InsightFace utiliza modelos de redes neurais treinados especificamente para reconhecimento facial. Uma das abordagens associadas a esses modelos é o ArcFace, que utiliza redes neurais profundas para produzir uma representação numérica da face.
+A imagem do rosto, normalmente alinhada em 112 × 112 pixels, é fornecida à rede neural. Então, ela analisa diferentes padrões presentes na face e  aprende, durante o treinamento, quais características são úteis para diferenciar uma pessoa da outra.
+É importante entender que a rede não simplesmente transforma cada pixel da imagem em um número. Ela realiza várias operações internas através das camadas da rede neural e, ao final do processamento, produz uma representação compacta chamada embedding facial.
+Em muitos modelos utilizados pelo InsightFace, esse embedding possui 512 valores:   Embedding = [e₁, e₂, e₃, ..., e₅₁₂]. Valores estes que representam, em conjunto, as características aprendidas pela rede neural sobre aquela face. Uma maneira melhor de visualizar isso é imaginar que cada pessoa, depois de passar pela rede neural, é representada por um ponto em um espaço de 512 dimensões.
+Esse espaço é abstrato. Não conseguimos visualizar diretamente suas 512 dimensões, mas matematicamente podemos calcular a posição e a distância entre os embeddings.
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/27ecbc39-687f-4398-841d-804a345fcdc1" />
+
+3. Comparar Rostos
+Depois que duas fotos de rostos são transformadas naquelas "impressões digitais numéricas" (listas de 512 números, chamadas de embeddings), o sistema precisa descobrir o quanto elas se parecem. Para isso, ele compara os 512 números de uma foto com os 512 números da outra, usando uma conta matemática chamada similaridade de cosseno. Pense nos embeddings como setas apontando para uma direção: se as duas setas apontam para direções parecidas, o resultado é uma similaridade alta, o que sugere que é a mesma pessoa; se apontam para direções bem diferentes, a similaridade é baixa, sugerindo pessoas diferentes. Existe também outra forma de comparar, calculando a "distância" entre os números — só que aqui a lógica é invertida: distância pequena indica que são parecidos (provável mesma pessoa), e distância grande indica que são diferentes.
+Só o valor da similaridade ou da distância, porém, não é suficiente para decidir sozinho se é a mesma pessoa. É preciso definir um valor de referência, chamado threshold (limiar): se a similaridade for igual ou maior que esse valor, o sistema considera que é a mesma pessoa; se for menor, considera que são pessoas diferentes. Esse valor não é fixo — ele muda de acordo com o modelo usado e com o tipo de aplicação. Por exemplo, um sistema de segurança para liberar acesso a um prédio pode exigir um critério mais rígido do que um aplicativo que só organiza fotos no celular.
+De forma resumida, todo o processo segue uma sequência de etapas: a imagem passa por detecção do rosto, depois é alinhada, em seguida é transformada em um embedding de 512 números pela rede neural ArcFace, e por fim dois desses embeddings são comparados matematicamente para gerar uma decisão final. Ou seja, o sistema não compara as fotos "olhando" pixel por pixel — ele compara representações numéricas dos rostos, e sua eficiência depende da capacidade da rede neural de gerar números parecidos para fotos da mesma pessoa e números diferentes para fotos de pessoas distintas.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/218fd82b-20ae-4325-89f3-e1f2d90e2325" />
 
 
 ---
