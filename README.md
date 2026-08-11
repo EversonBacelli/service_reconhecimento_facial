@@ -26,7 +26,9 @@ Essa etapa é importante porque reduz as diferenças causadas pela posição, in
 
 <br>
 
-### 2 - Depois que o rosto foi detectado e alinhado, começa uma das etapas mais importantes do reconhecimento facial: a extração do embedding. O InsightFace utiliza modelos de redes neurais treinados especificamente para reconhecimento facial. Uma das abordagens associadas a esses modelos é o ArcFace, que utiliza redes neurais profundas para produzir uma representação numérica da face.
+### 2 - Extração dos Embeddings da Face
+
+Depois que o rosto foi detectado e alinhado, começa uma das etapas mais importantes do reconhecimento facial: a extração do embedding. O InsightFace utiliza modelos de redes neurais treinados especificamente para reconhecimento facial. Uma das abordagens associadas a esses modelos é o ArcFace, que utiliza redes neurais profundas para produzir uma representação numérica da face.
 A imagem do rosto, normalmente alinhada em 112 × 112 pixels, é fornecida à rede neural. Então, ela analisa diferentes padrões presentes na face e  aprende, durante o treinamento, quais características são úteis para diferenciar uma pessoa da outra.
 É importante entender que a rede não simplesmente transforma cada pixel da imagem em um número. Ela realiza várias operações internas através das camadas da rede neural e, ao final do processamento, produz uma representação compacta chamada embedding facial.
 Em muitos modelos utilizados pelo InsightFace, esse embedding possui 512 valores:   Embedding = [e₁, e₂, e₃, ..., e₅₁₂]. Valores estes que representam, em conjunto, as características aprendidas pela rede neural sobre aquela face. Uma maneira melhor de visualizar isso é imaginar que cada pessoa, depois de passar pela rede neural, é representada por um ponto em um espaço de 512 dimensões.
