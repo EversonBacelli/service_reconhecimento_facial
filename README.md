@@ -5,6 +5,7 @@
 API REST desenvolvida em Python com **Flask** voltada para o **Processamento e Reconhecimento Facial**. O sistema utiliza técnicas avançadas de Visão Computacional e Aprendizado de Máquina (baseado em **InsightFace**, **OpenCV** e **NumPy**) para autenticação biométrica, análise de qualidade de imagem, correção de iluminação, alinhamento facial e busca por similaridade. Este trabalho foi realizado no contexto na disciplina de Processamento de Imagem e Visão Computacional no Curso de Mestrado na UFABC conduzido pelo professor Francisco de Assis Zampirolli.
 
 📦 (Biblioteca de Reconhecimento Facial)
+
 O InsightFace realiza o reconhecimento facial utilizando técnicas de Inteligência Artificial e Deep Learning. O processo pode ser dividido em três etapas principais: detecção e alinhamento do rosto, geração do embedding facial e comparação dos embeddings.
 
 1. Encontra e alinha os rostos
@@ -17,7 +18,7 @@ Esses modelos não procuram simplesmente por padrões fixos de pixels. Eles fora
 - canto direito da boca.
 Esses pontos funcionam como referências para determinar a posição e a orientação do rosto. Por exemplo, se uma pessoa estiver com a cabeça inclinada, os olhos e a boca estarão inclinados na imagem original. Utilizando os landmarks, o sistema consegue realizar uma transformação geométrica para alinhar o rosto.
 O objetivo é fazer com que rostos encontrados em imagens diferentes sejam colocados em uma posição semelhante antes de serem enviados para a rede neural. Normalmente, o rosto alinhado é convertido para um tamanho padronizado, como 112 × 112 pixels, dependendo do modelo utilizado.
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/03c093fb-7d8e-4f94-afde-1831a34fffd3" />
+<img width="800" height="1000" alt="image" src="https://github.com/user-attachments/assets/03c093fb-7d8e-4f94-afde-1831a34fffd3" />
 
 Essa etapa é importante porque reduz as diferenças causadas pela posição, inclinação e escala do rosto. Assim, duas fotografias da mesma pessoa podem apresentar condições diferentes — por exemplo, uma fotografia com o rosto ligeiramente inclinado e outra com o rosto reto — mas o sistema tenta entregar para a próxima etapa uma representação geometricamente mais consistente.
 
